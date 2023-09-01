@@ -37,7 +37,7 @@ function CampaignList() {
     if ((!range.length || !range[1]) && !name) data = campaignsList;
 
     return data;
-  }, [name, JSON.stringify(range)]);
+  }, [name, JSON.stringify(range), campaignsList]);
 
   return (
     <GridWrapper>
