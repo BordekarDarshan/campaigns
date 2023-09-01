@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, nanoid } from "@reduxjs/toolkit";
 import { campaignsList } from "../../utils/campaignslist";
 import { fetchUsersApi } from "../../utils/apicalls";
 import { dataMapping } from "../../utils/helper";
@@ -7,6 +7,7 @@ const initialState = {
   campaignsList,
   isLoading: false,
   isError: false,
+  userList: {},
 };
 
 // Action
@@ -15,7 +16,13 @@ export const fetchUsers = createAsyncThunk("fetchUsers", fetchUsersApi);
 export const campaignSlice = createSlice({
   name: "campaigns",
   initialState,
-  reducers: {},
+  reducers: {
+    addCampaign: (state, action) => {
+      let newCampaign = action.payload.data;
+      newCampaign.id = nanoid();
+      state.campaignsList.push(newCampaign);
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchUsers.pending, (state) => {
       state.isLoading = true;
@@ -28,10 +35,11 @@ export const campaignSlice = createSlice({
       state.isLoading = false;
       state.isError = false;
       state.campaignsList = dataMapping(state.campaignsList, action.payload);
+      state.userList = action.payload;
     });
   },
 });
 
-export const {} = campaignSlice.actions;
+export const { addCampaign } = campaignSlice.actions;
 
 export default campaignSlice.reducer;
