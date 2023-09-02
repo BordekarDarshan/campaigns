@@ -13,6 +13,10 @@ function CustomButton({ type = "button", children, onClickHandler }) {
 const ButtonWrap = styled(Button)`
   background-color: var(--buttonBackground);
   color: var(--buttonColor);
+  height: 2.5rem;
+  :hover {
+    color: var(--buttonColor);
+  }
 `;
 
 export default CustomButton;

@@ -5,7 +5,7 @@ import Card from "./Card";
 function Header({ showDrawer }) {
   return (
     <Card>
-      <h3>Campaigns</h3>
+      <h3 className="header">Campaigns</h3>
       <CustomButton onClickHandler={showDrawer}>
         Create New Campaign
       </CustomButton>

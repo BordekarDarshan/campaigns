@@ -33,7 +33,7 @@ function Search() {
         <DateInput onChange={dateRangeChange} />
       </Col>
       <Col>
-        <Label linkid="search-input" text="Search Campaign nam"></Label>
+        <Label linkid="search-input" text="Search Campaign name"></Label>
         <Input onChangeHandler={onSearchCampaign} />
       </Col>
     </Card>

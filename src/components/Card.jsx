@@ -15,6 +15,10 @@ const CardWrapper = styled.div`
   ${Box}
   ${({ alignment }) => (alignment === "end" ? alignEnd : alignSpace)}
 
+  >.header {
+    font-weight: 500;
+  }
+
   @media (max-width: 468px) {
     flex-direction: column;
   }

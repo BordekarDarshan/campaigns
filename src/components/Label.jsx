@@ -7,7 +7,8 @@ function Label({ linkid, text = "" }) {
 
 const LabelWrapper = styled.label`
   margin-bottom: 1rem;
-  font-weight: 600;
+  font-weight: 500;
+  color: var(--textColor);
 `;
 
 export default Label;

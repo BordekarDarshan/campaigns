@@ -8,6 +8,7 @@ function DateInput({ onChange }) {
       onCalendarChange={onChange}
       format="MM/DD/YYYY"
       id="date-input"
+      style={{ padding: "0.5rem" }}
     />
   );
 }

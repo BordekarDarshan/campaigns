@@ -10,6 +10,7 @@ function Inputf({ onChangeHandler }) {
       placeholder="Search campaign name"
       onChange={onChangeHandler}
       id="search-input"
+      size="large"
     />
   );
 }
