@@ -65,16 +65,21 @@ function CampaignList() {
 const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
+  overflow-x: auto;
   ${Box}
 
   > .grid-item {
     word-break: break-word;
     text-align: center;
     padding: 1rem;
+    color: var(--textColor);
+    width: 200px;
+
     &.header {
       background-color: #f9faff;
       padding: 1rem;
       color: var(--textColor);
+      font-weight: 500;
     }
   }
   > .line {

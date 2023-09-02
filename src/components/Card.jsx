@@ -14,6 +14,10 @@ const CardWrapper = styled.div`
   padding: 1rem;
   ${Box}
   ${({ alignment }) => (alignment === "end" ? alignEnd : alignSpace)}
+
+  @media (max-width: 468px) {
+    flex-direction: column;
+  }
 `;
 
 export default Card;

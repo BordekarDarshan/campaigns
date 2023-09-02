@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, nanoid } from "@reduxjs/toolkit";
 import { campaignsList } from "../../utils/campaignslist";
 import { fetchUsersApi } from "../../utils/apicalls";
-import { dataMapping } from "../../utils/helper";
+import { dataMapping, userDataKeyValueMapping } from "../../utils/helper";
 
 const initialState = {
   campaignsList,
@@ -35,7 +35,7 @@ export const campaignSlice = createSlice({
       state.isLoading = false;
       state.isError = false;
       state.campaignsList = dataMapping(state.campaignsList, action.payload);
-      state.userList = action.payload;
+      state.userList = userDataKeyValueMapping(action.payload);
     });
   },
 });

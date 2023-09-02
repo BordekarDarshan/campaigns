@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Input, Select, Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import DateInput from "./DateInput";
@@ -11,29 +11,37 @@ const tailLayout = {
     span: 16,
   },
 };
-function CreateCampaign() {
+function CreateCampaign({ onClose }) {
   let {
-    campaignsReducer: { userList, campaignsList },
+    campaignsReducer: { userList },
   } = useSelector(({ campaignsReducer }) => ({
     campaignsReducer,
   }));
 
   const [form] = Form.useForm();
   const dispatch = useDispatch();
+  const [options, setOptions] = useState([]);
 
   const onFinish = (values) => {
+    let [startDate, endDate] = values.range;
     let payload = {
-      name: values.name,
-      startDate: values.range[0],
-      endDate: values.range[1],
-      Budget: values.Budget,
-      userId: values.userId,
+      endDate,
+      startDate,
+      ...values,
+      userName: userList[values.userId],
     };
     dispatch(addCampaign({ data: payload }));
     form.resetFields();
+    onClose();
   };
 
-  console.log({ campaignsList });
+  useEffect(() => {
+    const list = Object.keys(userList).map((data) => ({
+      key: data,
+      value: userList[data],
+    }));
+    setOptions(list);
+  }, []);
 
   return (
     <Form
@@ -61,10 +69,10 @@ function CreateCampaign() {
           placeholder="Select a option and change input text above"
           allowClear
         >
-          {userList.length > 0 &&
-            userList?.map((user) => (
-              <Option key={user.id} value={user.id}>
-                {user.name}
+          {Array.isArray(options) &&
+            options.map((user) => (
+              <Option key={user.key} value={user.key}>
+                {user.value}
               </Option>
             ))}
         </Select>

@@ -22,7 +22,7 @@ function Campaigns() {
       <Search />
       <CampaignList />
       <DrawerComp open={open} onClose={onClose}>
-        <CreateCampaign />
+        <CreateCampaign onClose={onClose} />
       </DrawerComp>
     </div>
   );

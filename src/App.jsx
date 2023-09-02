@@ -1,14 +1,14 @@
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchUsers } from "./features/campaigns/campaignSlice";
 import { styled } from "styled-components";
 import Campaigns from "./features/campaigns";
-// import { useEffect } from "react";
-// import { fetchUsers } from "./features/campaigns/campaignSlice";
 
 function App() {
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(fetchUsers());
-  // }, []);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, []);
   return (
     <AppWrapper>
       <Campaigns />
