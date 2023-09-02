@@ -1,7 +1,8 @@
 import { css } from "styled-components";
 
 export const Box = css`
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   border-radius: 5px;
   background-color: var(--cardBackground);
 `;

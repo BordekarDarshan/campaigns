@@ -2,6 +2,7 @@ import React, { Fragment, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { styled } from "styled-components";
 import { Box } from "../styling/Reusables";
+import formatNumber from "../utils/helper";
 
 const headerList = [
   "Name",
@@ -54,7 +55,7 @@ function CampaignList() {
           <div className="grid-item">{campaign.startDate}</div>
           <div className="grid-item">{campaign.endDate}</div>
           <div className="grid-item">{campaign.Active}</div>
-          <div className="grid-item">{campaign.Budget}</div>
+          <div className="grid-item">{formatNumber(campaign.Budget)}</div>
           <div className="line"></div>
         </Fragment>
       ))}
