@@ -55,7 +55,7 @@ function CampaignList() {
           <div className="grid-item">{campaign.endDate}</div>
           <div className="grid-item">{campaign.Active}</div>
           <div className="grid-item">{campaign.Budget}</div>
-          <div class="line"></div>
+          <div className="line"></div>
         </Fragment>
       ))}
     </GridWrapper>

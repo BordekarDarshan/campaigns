@@ -2,11 +2,13 @@ import React from "react";
 import CustomButton from "./Button";
 import Card from "./Card";
 
-function Header() {
+function Header({ showDrawer }) {
   return (
     <Card>
       <h3>Campaigns</h3>
-      <CustomButton>Create New Campaign</CustomButton>
+      <CustomButton onClickHandler={showDrawer}>
+        Create New Campaign
+      </CustomButton>
     </Card>
   );
 }

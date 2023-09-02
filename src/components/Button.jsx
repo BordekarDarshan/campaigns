@@ -2,8 +2,12 @@ import React from "react";
 import { Button } from "antd";
 import { styled } from "styled-components";
 
-function CustomButton({ type = "button", children }) {
-  return <ButtonWrap htmlType={type}>{children}</ButtonWrap>;
+function CustomButton({ type = "button", children, onClickHandler }) {
+  return (
+    <ButtonWrap htmlType={type} onClick={onClickHandler}>
+      {children}
+    </ButtonWrap>
+  );
 }
 
 const ButtonWrap = styled(Button)`

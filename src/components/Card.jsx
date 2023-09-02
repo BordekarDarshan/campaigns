@@ -11,6 +11,7 @@ const CardWrapper = styled.div`
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
+  padding: 1rem;
   ${Box}
   ${({ alignment }) => (alignment === "end" ? alignEnd : alignSpace)}
 `;

@@ -1,18 +1,10 @@
 import React from "react";
-import { Form, Input, Select } from "antd";
+import { Form, Input, Select, Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import DateInput from "./DateInput";
 import { addCampaign } from "../features/campaigns/campaignSlice";
-import Button from "./Button";
 const { Option } = Select;
-const layout = {
-  labelCol: {
-    span: 8,
-  },
-  wrapperCol: {
-    span: 16,
-  },
-};
+
 const tailLayout = {
   wrapperCol: {
     offset: 8,
@@ -45,7 +37,7 @@ function CreateCampaign() {
 
   return (
     <Form
-      {...layout}
+      layout="vertical"
       form={form}
       name="control-hooks"
       onFinish={onFinish}
@@ -64,15 +56,7 @@ function CreateCampaign() {
       >
         <Input />
       </Form.Item>
-      <Form.Item
-        name="userId"
-        label="Select User"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
+      <Form.Item name="userId" label="Select User">
         <Select
           placeholder="Select a option and change input text above"
           allowClear
@@ -107,10 +91,12 @@ function CreateCampaign() {
           },
         ]}
       >
-        <Input />
+        <Input placeholder="In USD" type="number" />
       </Form.Item>
       <Form.Item {...tailLayout}>
-        <Button>Create Campaign</Button>
+        <Button type="primary" htmlType="submit">
+          Create Campaign
+        </Button>
       </Form.Item>
     </Form>
   );
