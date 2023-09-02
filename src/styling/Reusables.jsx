@@ -9,6 +9,9 @@ export const Box = css`
 
 export const alignEnd = css`
   justify-content: end;
+  @media (max-width: 468px) {
+    flex-direction: column;
+  }
 `;
 
 export const alignSpace = css`

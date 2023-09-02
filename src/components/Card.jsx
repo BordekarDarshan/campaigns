@@ -17,10 +17,6 @@ const CardWrapper = styled.div`
   >.header {
     font-weight: 500;
   }
-
-  @media (max-width: 468px) {
-    flex-direction: column;
-  }
 `;
 
 export default Card;

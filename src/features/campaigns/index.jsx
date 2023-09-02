@@ -4,6 +4,7 @@ import Search from "../../components/Search";
 import Header from "../../components/Header";
 import DrawerComp from "../../components/Drawer";
 import CreateCampaign from "../../components/CreateCampaign";
+import ErrorBoundary from "antd/es/alert/ErrorBoundary";
 
 function Campaigns() {
   const [open, setOpen] = useState(false);
@@ -18,9 +19,15 @@ function Campaigns() {
 
   return (
     <div>
-      <Header showDrawer={showDrawer} />
-      <Search />
-      <CampaignList />
+      <ErrorBoundary>
+        <Header showDrawer={showDrawer} />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <Search />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <CampaignList />
+      </ErrorBoundary>
       <DrawerComp open={open} onClose={onClose}>
         <CreateCampaign onClose={onClose} />
       </DrawerComp>
