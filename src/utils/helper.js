@@ -4,9 +4,7 @@ export const userDataKeyValueMapping = (userArray = []) => {
     const userObj = {};
     for (let i = 0; i < userArray.length; i++) {
       const user = userArray[i];
-      if (user.hasOwnProperty(user.id)) {
-        userObj[user.id] = user.name;
-      }
+      userObj[user.id] = user?.name;
     }
     return userObj;
   } catch (error) {
