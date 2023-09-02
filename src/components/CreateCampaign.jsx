@@ -3,7 +3,7 @@ import { Form, Input, Select, Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import DateInput from "./DateInput";
 import { addCampaign } from "../features/campaigns/campaignSlice";
-import { flag } from "../utils/helper";
+import { addCampaignHandler } from "../utils/helper";
 const { Option } = Select;
 
 const tailLayout = {
@@ -24,17 +24,17 @@ function CreateCampaign({ onClose }) {
   const [options, setOptions] = useState([]);
 
   const onFinish = (values) => {
-    let [startDate, endDate] = values.range;
-    let payload = {
-      endDate,
-      startDate,
-      ...values,
-      userName: userList[values.userId],
-      status: flag(startDate, endDate),
-    };
-    dispatch(addCampaign({ data: payload }));
-    form.resetFields();
-    onClose();
+    try {
+      const campaignObj = addCampaignHandler(values, userList);
+      if (campaignObj) {
+        dispatch(addCampaign({ data: campaignObj }));
+        form.resetFields();
+        onClose();
+      }
+    } catch (error) {
+      console.log("O_F_I_O", error);
+      form.resetFields();
+    }
   };
 
   useEffect(() => {
@@ -57,16 +57,26 @@ function CreateCampaign({ onClose }) {
     >
       <Form.Item
         name="name"
-        label="Campaign Name"
+        label="Campaign name"
         rules={[
           {
             required: true,
+            message: "Campaign name is required.",
           },
         ]}
       >
         <Input />
       </Form.Item>
-      <Form.Item name="userId" label="Select User">
+      <Form.Item
+        name="userId"
+        label="Select user"
+        rules={[
+          {
+            required: true,
+            message: "Please choose an option.",
+          },
+        ]}
+      >
         <Select
           placeholder="Select a option and change input text above"
           allowClear
@@ -81,11 +91,12 @@ function CreateCampaign({ onClose }) {
       </Form.Item>
       <Form.Item
         name="range"
-        label="Start and end date"
+        label="Start and end date of the campaign"
         htmlFor="create-campaign-date"
         rules={[
           {
             required: true,
+            message: "Please select start and end date of the campaign.",
           },
         ]}
       >
@@ -105,9 +116,9 @@ function CreateCampaign({ onClose }) {
       >
         <Input placeholder="In USD" type="number" />
       </Form.Item>
-      <Form.Item {...tailLayout}>
+      <Form.Item {...tailLayout} style={{ marginTop: "1rem" }}>
         <Button type="primary" htmlType="submit">
-          Create Campaign
+          + Create Campaign
         </Button>
       </Form.Item>
     </Form>
