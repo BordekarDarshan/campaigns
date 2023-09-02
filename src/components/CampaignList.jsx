@@ -30,7 +30,7 @@ function CampaignList() {
   const filteredList = useMemo(() => {
     let data = campaignsList.filter((item) => {
       return (
-        item.name.toLocaleLowerCase().includes(name) &&
+        item.name.toLowerCase().includes(name.toLowerCase()) &&
         (range[0] && range[1]
           ? new Date(range[0]) < new Date(item.startDate) &&
             new Date(range[1]) > new Date(item.endDate)
