@@ -19,7 +19,7 @@ export const campaignsList = [
     id: 3,
     name: "Miboo",
     startDate: "11/1/2022",
-    endDate: "6/20/2022",
+    endDate: "6/20/2024",
     Budget: 239507,
     userId: 7,
   },

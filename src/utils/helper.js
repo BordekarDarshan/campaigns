@@ -13,6 +13,34 @@ export const dataMapping = (campaignArray, userArray) => {
   for (let i = 0; i < campaignArray.length; i++) {
     const campaign = campaignArray[i];
     campaign["userName"] = userObj[campaign.userId] ?? "Unknown User";
+    campaign["status"] = flag(campaign.startDate, campaign.endDate);
   }
   return campaignArray;
+};
+
+export function formatNumber(num, precision = 2) {
+  const map = [
+    { suffix: "B", threshold: 1e9 },
+    { suffix: "M", threshold: 1e6 },
+    { suffix: "K", threshold: 1e3 },
+    { suffix: "", threshold: 1 },
+  ];
+
+  const found = map.find((x) => Math.abs(num) >= x.threshold);
+  if (found) {
+    const formatted = (num / found.threshold).toFixed(precision) + found.suffix;
+    return formatted + " USD";
+  }
+
+  return num + " USD";
+}
+
+const currentDate = new Date();
+export const flag = (startDate, endDate) => {
+  if (startDate && endDate) {
+    if (currentDate > new Date(startDate) && currentDate < new Date(endDate)) {
+      return "ACTIVE";
+    }
+  }
+  return "INACTIVE";
 };
