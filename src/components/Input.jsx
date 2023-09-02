@@ -3,13 +3,13 @@ import React from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import { styled } from "styled-components";
 
-function Inputf({ onChangeHandler }) {
+function InputComp({ onChangeHandler, id = "" }) {
   return (
     <InputWrapper
       addonAfter={<SearchOutlined />}
       placeholder="Search campaign name"
       onChange={onChangeHandler}
-      id="search-input"
+      id={id}
       size="large"
       allowClear={true}
     />
@@ -18,4 +18,4 @@ function Inputf({ onChangeHandler }) {
 
 const InputWrapper = styled(Input)``;
 
-export default Inputf;
+export default InputComp;
