@@ -4,7 +4,7 @@ export const userDataKeyValueMapping = (userArray = []) => {
     const userObj = {};
     for (let i = 0; i < userArray.length; i++) {
       const user = userArray[i];
-      if (user.hasOwnProperty(id)) {
+      if (user.hasOwnProperty(user.id)) {
         userObj[user.id] = user.name;
       }
     }
@@ -18,13 +18,13 @@ export const userDataKeyValueMapping = (userArray = []) => {
 export const dataMapping = (campaignArray, userArray) => {
   try {
     const userObj = userDataKeyValueMapping(userArray);
-    let cloneCampaign = JSON.parse(JSON.stringify(campaignArray));
-    for (let i = 0; i < cloneCampaign.length; i++) {
-      const campaign = cloneCampaign[i];
+    let cloneArray = JSON.parse(JSON.stringify(campaignArray));
+    for (let i = 0; i < cloneArray.length; i++) {
+      const campaign = cloneArray[i];
       campaign["userName"] = userObj[campaign.userId] ?? "Unknown User";
       campaign["status"] = flag(campaign.startDate, campaign.endDate);
     }
-    return campaignArray;
+    return cloneArray;
   } catch (error) {
     return campaignArray;
   }
