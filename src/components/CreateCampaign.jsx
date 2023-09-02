@@ -82,6 +82,7 @@ function CreateCampaign({ onClose }) {
       <Form.Item
         name="range"
         label="Start and end date"
+        htmlFor="create-campaign-date"
         rules={[
           {
             required: true,
@@ -89,6 +90,7 @@ function CreateCampaign({ onClose }) {
         ]}
       >
         <DateInput
+          id="create-campaign-date"
           onChange={(data, string) => form.setFieldValue("range", string)}
         />
       </Form.Item>

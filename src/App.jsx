@@ -8,14 +8,17 @@ import Maintenance from "./components/Maintenance";
 
 function App() {
   const dispatch = useDispatch();
-  let {
+
+  const {
     campaignsReducer: { isError, isLoading },
   } = useSelector(({ campaignsReducer }) => ({
     campaignsReducer,
   }));
+
   useEffect(() => {
     dispatch(fetchUsers());
   }, []);
+
   return (
     <AppWrapper>
       {isLoading ? (

@@ -2,7 +2,7 @@ import React from "react";
 import { styled } from "styled-components";
 import { Box, alignEnd, alignSpace } from "../styling/Reusables";
 
-function Card({ alignment, children }) {
+function Card({ alignment = "space", children }) {
   return <CardWrapper alignment={alignment}>{children}</CardWrapper>;
 }
 

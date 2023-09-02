@@ -30,11 +30,11 @@ function Search() {
     <Card alignment="end">
       <Col>
         <Label linkid="date-input" text="Search by date range"></Label>
-        <DateInput onChange={dateRangeChange} />
+        <DateInput onChange={dateRangeChange} id="date-input" />
       </Col>
       <Col>
         <Label linkid="search-input" text="Search Campaign name"></Label>
-        <Input onChangeHandler={onSearchCampaign} />
+        <Input onChangeHandler={onSearchCampaign} id="search-input" />
       </Col>
     </Card>
   );

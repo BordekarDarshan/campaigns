@@ -16,6 +16,7 @@ class ErrorBoundary extends Component {
 
   render() {
     if (this.state.hasError) {
+      // TODO: Return meaningful statement
       return <>Something Went Wrong!!!</>;
     }
 
