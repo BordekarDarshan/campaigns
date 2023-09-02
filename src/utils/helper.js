@@ -13,11 +13,12 @@ export const dataMapping = (campaignArray, userArray) => {
   for (let i = 0; i < campaignArray.length; i++) {
     const campaign = campaignArray[i];
     campaign["userName"] = userObj[campaign.userId] ?? "Unknown User";
+    campaign["status"] = flag(campaign.startDate, campaign.endDate);
   }
   return campaignArray;
 };
 
-export default function formatNumber(num, precision = 2) {
+export function formatNumber(num, precision = 2) {
   const map = [
     { suffix: "B", threshold: 1e9 },
     { suffix: "M", threshold: 1e6 },
@@ -33,3 +34,13 @@ export default function formatNumber(num, precision = 2) {
 
   return num + " USD";
 }
+
+const currentDate = new Date();
+export const flag = (startDate, endDate) => {
+  if (startDate && endDate) {
+    if (currentDate > new Date(startDate) && currentDate < new Date(endDate)) {
+      return "ACTIVE";
+    }
+  }
+  return "INACTIVE";
+};

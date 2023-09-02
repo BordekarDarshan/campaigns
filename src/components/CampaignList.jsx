@@ -2,7 +2,8 @@ import React, { Fragment, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { styled } from "styled-components";
 import { Box } from "../styling/Reusables";
-import formatNumber from "../utils/helper";
+import { flag, formatNumber } from "../utils/helper";
+import { Tag } from "antd";
 
 const headerList = [
   "Name",
@@ -50,11 +51,18 @@ function CampaignList() {
       ))}
       {filteredList.map((campaign) => (
         <Fragment key={campaign.id}>
-          <div className="grid-item">{campaign.name}</div>
+          <div className="grid-item cell-name">{campaign.name}</div>
           <div className="grid-item">{campaign.userName}</div>
           <div className="grid-item">{campaign.startDate}</div>
           <div className="grid-item">{campaign.endDate}</div>
-          <div className="grid-item">{campaign.Active}</div>
+          <div className="grid-item">
+            <Tag
+              color={campaign.status === "ACTIVE" ? "#228B22" : "#C41E3A"}
+              style={{ letterSpacing: ".5px" }}
+            >
+              {campaign.status}
+            </Tag>
+          </div>
           <div className="grid-item">{formatNumber(campaign.Budget)}</div>
           <div className="line"></div>
         </Fragment>
@@ -65,22 +73,23 @@ function CampaignList() {
 
 const GridWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: 250px repeat(5, 1fr);
   overflow-x: auto;
   ${Box}
 
   > .grid-item {
-    word-break: break-word;
     text-align: center;
     padding: 1rem;
     color: var(--textColor);
-    width: 200px;
 
     &.header {
       background-color: #f9faff;
       padding: 1rem;
       color: var(--textColor);
       font-weight: 500;
+    }
+    &.cell-name {
+      word-wrap: break-word;
     }
   }
   > .line {
