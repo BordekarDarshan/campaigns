@@ -1,8 +1,9 @@
 import React from "react";
-import { Button, Form, Input, Select } from "antd";
+import { Form, Input, Select } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import DateInput from "./DateInput";
 import { addCampaign } from "../features/campaigns/campaignSlice";
+import Button from "./Button";
 const { Option } = Select;
 const layout = {
   labelCol: {
@@ -18,7 +19,7 @@ const tailLayout = {
     span: 16,
   },
 };
-const CreateCampaign = () => {
+function CreateCampaign() {
   let {
     campaignsReducer: { userList, campaignsList },
   } = useSelector(({ campaignsReducer }) => ({
@@ -109,11 +110,9 @@ const CreateCampaign = () => {
         <Input />
       </Form.Item>
       <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
+        <Button>Create Campaign</Button>
       </Form.Item>
     </Form>
   );
-};
+}
 export default CreateCampaign;

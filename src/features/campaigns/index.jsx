@@ -1,12 +1,12 @@
 import React from "react";
 import CampaignList from "../../components/CampaignList";
 import Search from "../../components/Search";
-import CreateCampaign from "../../components/createCampaign";
+import Header from "../../components/Header";
 
 function Campaigns() {
   return (
     <div>
-      <CreateCampaign />
+      <Header />
       <Search />
       <CampaignList />
     </div>

@@ -3,6 +3,9 @@ import { useDispatch } from "react-redux";
 import { addQuery } from "../features/campaigns/searchSlice";
 import DateInput from "./DateInput";
 import Input from "./Input";
+import Card from "./Card";
+import { styled } from "styled-components";
+import Label from "./Label";
 
 function Search() {
   let dispatch = useDispatch();
@@ -24,11 +27,21 @@ function Search() {
   };
 
   return (
-    <div>
-      <DateInput onChange={dateRangeChange} />
-      <Input onChangeHandler={onSearchCampaign} />
-    </div>
+    <Card alignment="end">
+      <Col>
+        <Label linkid="date-input" text="Search by date range"></Label>
+        <DateInput onChange={dateRangeChange} />
+      </Col>
+      <Col>
+        <Label linkid="search-input" text="Search Campaign nam"></Label>
+        <Input onChangeHandler={onSearchCampaign} />
+      </Col>
+    </Card>
   );
 }
+const Col = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 export default Search;

@@ -1,6 +1,7 @@
 import React, { Fragment, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { styled } from "styled-components";
+import { Box } from "../styling/Reusables";
 
 const headerList = [
   "Name",
@@ -42,7 +43,7 @@ function CampaignList() {
   return (
     <GridWrapper>
       {headerList.map((data, i) => (
-        <div className="grid-item" key={i}>
+        <div className="grid-item header" key={i}>
           {data}
         </div>
       ))}
@@ -54,6 +55,7 @@ function CampaignList() {
           <div className="grid-item">{campaign.endDate}</div>
           <div className="grid-item">{campaign.Active}</div>
           <div className="grid-item">{campaign.Budget}</div>
+          <div class="line"></div>
         </Fragment>
       ))}
     </GridWrapper>
@@ -63,10 +65,22 @@ function CampaignList() {
 const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
+  ${Box}
+
   > .grid-item {
-    width: 200px;
     word-break: break-word;
     text-align: center;
+    padding: 1rem;
+    &.header {
+      background-color: #f9faff;
+      padding: 1rem;
+      color: var(--textColor);
+    }
+  }
+  > .line {
+    grid-column: 1/7;
+    height: 2px;
+    border-bottom: 1px solid var(--borderColor);
   }
 `;
 
