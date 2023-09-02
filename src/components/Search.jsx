@@ -34,7 +34,7 @@ function Search() {
       </Col>
       <Col>
         <Label linkid="search-input" text="Search Campaign name"></Label>
-        <Input onChangeHandler={onSearchCampaign} id="search-input" />
+        <input onChange={onSearchCampaign} id="search-input" />
       </Col>
     </Card>
   );
