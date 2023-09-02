@@ -2,8 +2,9 @@ import React, { Fragment, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { styled } from "styled-components";
 import { Box } from "../styling/Reusables";
-import { flag, formatNumber } from "../utils/helper";
+import { formatNumber } from "../utils/helper";
 import { Tag } from "antd";
+import NoDataFound from "./NoDataFound";
 
 const headerList = [
   "Name",
@@ -49,24 +50,28 @@ function CampaignList() {
           {data}
         </div>
       ))}
-      {filteredList.map((campaign) => (
-        <Fragment key={campaign.id}>
-          <div className="grid-item cell-name">{campaign.name}</div>
-          <div className="grid-item">{campaign.userName}</div>
-          <div className="grid-item">{campaign.startDate}</div>
-          <div className="grid-item">{campaign.endDate}</div>
-          <div className="grid-item">
-            <Tag
-              color={campaign.status === "ACTIVE" ? "#228B22" : "#C41E3A"}
-              style={{ letterSpacing: ".5px" }}
-            >
-              {campaign.status}
-            </Tag>
-          </div>
-          <div className="grid-item">{formatNumber(campaign.Budget)}</div>
-          <div className="line"></div>
-        </Fragment>
-      ))}
+      {filteredList.length > 0 ? (
+        filteredList.map((campaign) => (
+          <Fragment key={campaign.id}>
+            <div className="grid-item cell-name">{campaign.name}</div>
+            <div className="grid-item">{campaign.userName}</div>
+            <div className="grid-item">{campaign.startDate}</div>
+            <div className="grid-item">{campaign.endDate}</div>
+            <div className="grid-item">
+              <Tag
+                color={campaign.status === "ACTIVE" ? "#228B22" : "#C41E3A"}
+                style={{ letterSpacing: ".5px" }}
+              >
+                {campaign.status}
+              </Tag>
+            </div>
+            <div className="grid-item">{formatNumber(campaign.Budget)}</div>
+            <div className="line"></div>
+          </Fragment>
+        ))
+      ) : (
+        <NoDataFound />
+      )}
     </GridWrapper>
   );
 }

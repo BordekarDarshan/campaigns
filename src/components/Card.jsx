@@ -8,7 +8,6 @@ function Card({ alignment, children }) {
 
 const CardWrapper = styled.div`
   display: flex;
-  align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
   padding: 1rem;

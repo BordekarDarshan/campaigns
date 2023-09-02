@@ -3,6 +3,7 @@ import { Form, Input, Select, Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import DateInput from "./DateInput";
 import { addCampaign } from "../features/campaigns/campaignSlice";
+import { flag } from "../utils/helper";
 const { Option } = Select;
 
 const tailLayout = {
@@ -29,6 +30,7 @@ function CreateCampaign({ onClose }) {
       startDate,
       ...values,
       userName: userList[values.userId],
+      status: flag(startDate, endDate),
     };
     dispatch(addCampaign({ data: payload }));
     form.resetFields();

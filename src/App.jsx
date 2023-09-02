@@ -35,7 +35,7 @@ const AppWrapper = styled.div`
   --buttonColor: #fff;
   --cardBackground: #fefffe;
   --textColor: #747475;
-  --borderColor: #d2d3d2;
+  --borderColor: #ebeceb;
   --headerColor: #0b020b;
   padding: 1rem;
   background-color: var(--background);

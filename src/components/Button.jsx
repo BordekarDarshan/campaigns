@@ -14,6 +14,7 @@ const ButtonWrap = styled(Button)`
   background-color: var(--buttonBackground);
   color: var(--buttonColor);
   height: 2.5rem;
+  align-self: center;
   :hover {
     color: var(--buttonColor);
   }

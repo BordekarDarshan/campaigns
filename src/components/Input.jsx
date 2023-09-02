@@ -11,12 +11,11 @@ function Inputf({ onChangeHandler }) {
       onChange={onChangeHandler}
       id="search-input"
       size="large"
+      allowClear={true}
     />
   );
 }
 
-const InputWrapper = styled(Input)`
-  width: 300px;
-`;
+const InputWrapper = styled(Input)``;
 
 export default Inputf;
