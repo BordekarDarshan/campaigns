@@ -4,7 +4,7 @@ import Search from "../../components/Search";
 import Header from "../../components/Header";
 import DrawerComp from "../../components/Drawer";
 import CreateCampaign from "../../components/CreateCampaign";
-import ErrorBoundary from "antd/es/alert/ErrorBoundary";
+import ErrorBoundary from "../../components/ErrorBoundary";
 
 function Campaigns() {
   const [open, setOpen] = useState(false);
